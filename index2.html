@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form.bcas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style3.css">
+    <!-- <script src="form.js" defer ></script> -->
+    <style>
+        .bx1{
+            height: 85vh;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        fieldset{
+            border: 2px rgb(121, 121, 121) solid ;
+            border-radius: 10px;
+            padding: 10px;
+            text-transform: capitalize;
+            padding-left: 4px;
+            width: 100%;
+        }
+        legend{
+            text-transform: capitalize;
+            font-size: 1.2rem;
+        }
+        label{
+            font-size: 14px;
+        }
+        #PC,#TC{
+            width: 15px;
+            margin-left: 45%;
+        }
+        @media screen and (max-width:780px){
+            ::placeholder{
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+            fieldset{
+                width: 100%;
+            }
+            label{
+                font-size: 11px;
+            }
+            #PC,#TC{
+                width: 10px;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="main">
+        <form action="connect.php" method="post" id="formname" name="form_college" onsubmit="return validations()">
+            <div class="bx1">
+                <div class="container"id="page1">
+                    <div class="img">
+                        <h1>Student details</h1>
+                        <img src="logo.jpg" alt="">
+                    </div>
+                    <hr>
+                    <div><input type="number" name="ExaminationNo" placeholder="Examination Number"></div>
+                    <h3 class="alrt"></h3>
+                    <!-- <div> <input type="text" name="name" placeholder="Student Name" onchange="check1"></div>
+
+                    <h3 class="alrt"></h3>
+                    <div><input type="email" name="email" id="email"  placeholder="Email"></div>
+                    <h3 class="alrt"></h3>
+
+                    <div ><input type="number" name="contact" placeholder="Contact Number"  ></div>
+                    <h3 class="alrt"></h3>
+
+                    <div class="cert" style="width:100%;">
+                        <fieldset style=" width: 80%; margin: auto;">
+                            <legend>Certificate</legend>
+                            <div class="check" style="width: 100%; display: flex; justify-content: space-evenly;">
+                                <div style="width:100%;">
+                                    <label for="TC">Transfer / College leaving Certificate</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" checked value="Transfer/College leaving" name="TC" id="TC"><br>
+                                </div>
+                            </div>
+                            <div class="check" style="width: 100%; display: flex; justify-content: space-evenly;">
+                                <div style="width:100%;">
+                                    <label for="PC">Provisional Certificate</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="PC" value="Provisional" id="PC";>
+                                </div>
+                            </div>
+                        
+                        </fieldset>
+                    </div> -->
+
+                    <div class="sub"><button type="submit" id="sub">submit</button></div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // //--------validation for name-----------//
+        let fname = document.form_college.name;
+        let alrt = document.getElementsByClassName("alrt");
+        
+        function check1() {
+        
+            let len = fname.value.length;
+            let val = fname.value;
+            let number1 = ['0','1','2','3','4','5','6','7','8','9'];
+            for(i=0; i<len; i++){
+                for(j=0; j<number1.length; j++){
+                    if(val[i]==number1[j]){
+                        let err = "**  name field only accept alphabats!";
+                        alrt[1].innerHTML = err;
+                        alrt[1].style.display = "block";
+                        alrt[1].style.color = "red";
+                        fname.focus();
+                        return false;
+                    }else if(len<3 || len>60){
+                        err = "**  name lenght should be between 3 to 60!";
+                        alrt[1].innerHTML = err;
+                        alrt[1].style.display = "block"; 
+                        alrt[1].style.color = "red";
+                    }
+                    else{
+                        err = "** Looks Perfect";
+                        alrt[1].innerHTML = err;
+                        alrt[1].style.display = "block";
+                        alrt[1].style.color = "green";
+                    }
+                }
+            }
+        }
+        fname.addEventListener("keyup",check1); 
+
+        // //-----------------validation for middle name---------------------//
+
+        // let mname = document.form_college.middlename;
+        // const check2 = () => {
+        //     let len = mname.value.length;
+        //     let val = mname.value;
+        //     let number1 = ['0','1','2','3','4','5','6','7','8','9'];
+        //     for(i=0; i<len; i++){
+        //         for(j=0; j<number1.length; j++){
+        //             if(val[i]==number1[j]){
+        //                 let err = "**  name field only accept alphabats!";
+        //                 alrt[1].innerHTML = err;
+        //                 alrt[1].style.display = "block";
+        //                 alrt[1].style.color = "red";
+        //                 mname.focus();
+        //                 return;
+        //             }else if(len<3 || len>60){
+        //                 let err = "**  name lenght should be between 3 to 60!";
+        //                 alrt[1].innerHTML = err;
+        //                 alrt[1].style.display = "block";
+        //                 alrt[1].style.color = "red";
+        //                 mname.focus();
+        //             }
+        //             else{
+        //                 let err = "** Looks Perfect";
+        //                 alrt[1].innerHTML = err;
+        //                 alrt[1].style.display = "block";
+        //                 alrt[1].style.color = "green";
+        //             }
+        //         }
+        //     }
+        // }
+
+        // mname.addEventListener("change",check2);
+
+        // //------------------------validation for last name---------------------//
+
+        // let lname = document.form_college.lastname;
+        // const check3 = () => {
+        //     let len = lname.value.length;
+        //     let val = lname.value;
+        //     let number1 = ['0','1','2','3','4','5','6','7','8','9'];
+        //     for(i=0; i<len; i++){
+        //         for(j=0; j<number1.length; j++){
+        //             if(val[i]==number1[j]){
+        //                 let err = "**  name field only accept alphabats!";
+        //                 alrt[2].innerHTML = err;
+        //                 alrt[2].style.display = "block";
+        //                 alrt[2].style.color = "red";
+        //                 lname.focus();
+        //                 return;
+        //             }else if(len<3 || len>60){
+        //                 let err = "**  name lenght should be between 3 to 60!";
+        //                 alrt[2].innerHTML = err;
+        //                 alrt[2].style.display = "block";
+        //                 alrt[2].style.color = "red";
+        //                 lname.focus();
+        //             }
+        //             else{
+        //                 let err = "** Looks Perfect";
+        //                 alrt[2].style.display = "block";
+        //                 alrt[2].innerHTML = err;
+        //                 alrt[2].style.color = "green";
+        //             }
+        //         }
+        //     }
+        // }
+        // lname.addEventListener("change",check3);
+
+        // //-------------------------validations for fathers name----------------//
+        // let faname = document.form_college.fathername;
+        // const check33  = () =>{
+        //     let len = faname.value.length;
+        //     let val = faname.value;
+        //     let number1 = ['0','1','2','3','4','5','6','7','8','9'];
+        //     for(i=0; i<len; i++){
+        //         for(j=0; j<number1.length; j++){
+        //             if(val[i]==number1[j]){
+        //                 let err = "**  name field only accept alphabats!";
+        //                 alrt[3].innerHTML = err;
+        //                 alrt[3].style.display = "block";
+        //                 alrt[3].style.color = "red";
+        //                 faname.focus();
+        //                 return;
+        //             }else if(len<3 || len>60){
+        //                 let err = "**  name lenght should be between 3 to 60!";
+        //                 alrt[3].innerHTML = err;
+        //                 alrt[3].style.display = "block";
+        //                 alrt[3].style.color = "red";
+        //                 faname.focus();
+        //             }
+        //             else{
+        //                 let err = "** Looks Perfect";
+        //                 alrt[3].innerHTML = err;
+        //                 alrt[3].style.display = "block";
+        //                 alrt[3].style.color = "green";
+        //             }
+        //         }
+        //     }
+        // }
+        // faname.addEventListener("change",check33);
+
+        // //--------------------------validations for pincode---------------//
+
+        // let pnum = document.form_college.pincode;
+        // const check4 = () => {
+        //     if(pnum.value.length!=6){
+        //         let err = "**Pin-Code should be of six digits";
+        //         alrt[4].innerHTML = err;
+        //         alrt[4].style.display = "block";
+        //         alrt[4].style.color = "red";
+        //         pnum.focus();
+        //         return ;
+        //     }else{
+        //         let err = "** Looks Perfect";
+        //         alrt[4].style.display = "block";
+        //         alrt[4].innerHTML = err;
+        //         alrt[4].style.display = "block";
+        //         alrt[4].style.color = "green";
+        //     }
+        // }
+        // pnum.addEventListener("change",check4);
+
+        // //-------------------------validations for contact number----------------------//
+
+        let cnum = document.form_college.contact;
+        function check5(){
+            let err;
+            if(cnum.value.length==10){
+                err = "** Looks Perfect";
+                alrt[3].innerHTML = err;
+                alrt[3].style.display = "block";
+                alrt[3].style.color = "green";
+                cnum.focus();
+                return false;
+            }else{
+                err = "** should be of ten digits";
+                alrt[3].innerHTML = err;
+                alrt[3].style.color = "red";
+            }
+        }
+        cnum.addEventListener("keyup",check5);
+
+        // //-------------------validation for email-----------------//
+
+        let email = document.form_college.email;
+        function check55() {
+        
+            let evalue = email.value;
+            if(evalue.charAt(evalue.length-4)!="." && evalue.charAt(evalue.length-3)!="."){
+                let err = "**invalid email character after '.' ";
+                alrt[2].innerHTML = err;
+                alrt[2].style.display = "block";
+                alrt[2].style.color = "red";
+                document.form_college.email.focus();
+                return false;
+            }else{
+                let err = "** Looks Perfect!";
+                alrt[2].innerHTML = err;
+                alrt[2].style.color = "green";
+            }
+        }
+        email.addEventListener("change", check55);
+
+
+        // //--------------------validation for enrollment number--------------//
+        let ennum = document.form_college.ExaminationNo;
+        function check6() {
+            if(ennum.value.length != 11){
+                let err = "**Examination Number should be of eleven digits";
+                alrt[0].innerHTML = err;
+                alrt[0].style.color = "red";
+                return false;
+            }
+            else{
+                let err = "** Looks Perfect!";
+                alrt[0].innerHTML = err;
+                alrt[0].style.display = "block";
+                alrt[0].style.color = "green";
+                document.form_college.ExaminationNo.focus();
+                
+            }
+        }
+        ennum.addEventListener("keyup", check6);
+        // //----------------validation for rollno--------------------//
+        // let crnum = document.form_college.cr;
+        // const check7 = () => {
+        //     if(crnum.value.length == 7){
+        //         let err = "** Looks Perfect";
+        //         alrt[8].innerHTML = err;
+        //         alrt[8].style.display = "block";
+        //         alrt[8].style.style = "green";
+        //         console.log(alrt[8]);
+        //         document.form_college.cr.focus();
+        //         return false;
+        //     }else{
+        //         let err = "**college rollno should be of seven digits";
+        //         alrt[8].innerHTML = err;
+        //         alrt[8].style.color = "red";
+        //     }
+        // }
+        // crnum.addEventListener("change", check7);
+
+    </script>
+
+</body>
+</html>
